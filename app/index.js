@@ -4,7 +4,8 @@ var ReactDom = require('react-dom');
 const userData = {
     userName: 'DrewMac',
     fullName: 'Andrew McCauley',
-    photoSrc: "https://upload.wikimedia.org/wikipedia/en/9/9b/Rickastleyposter.jpg"
+    photoSrc: "https://upload.wikimedia.org/wikipedia/en/9/9b/Rickastleyposter.jpg",
+    profileLink: 'https://github.com/amccauley723'
 };
 
 class ProfileInformationContainer extends React.Component {
@@ -12,8 +13,9 @@ class ProfileInformationContainer extends React.Component {
         return (
             <div>
                 <UserProfilePhoto pictureSrc={this.props.userData.photoSrc} />
-                <UserFullName details={this.props.userData} />
-                <UserName details={this.props.userData} />
+                <UserFullName fullName={this.props.userData.fullName} />
+                <UserName userName={this.props.userData.userName} />
+                <ProfileLink profileLink={this.props.userData.profileLink} />
             </div>
         )
     }
@@ -31,7 +33,7 @@ class UserFullName extends React.Component {
     render() {
         return (
             <div>
-                <p>{this.props.details.fullName}</p>
+                <p>{this.props.fullName}</p>
             </div>
         )
     }
@@ -41,8 +43,36 @@ class UserName extends React.Component {
     render() {
         return (
             <div>
-                <p>{this.props.details.userName}</p>
+                <p>{this.props.userName}</p>
             </div>
+        )
+    }
+}
+
+class ProfileLink extends React.Component {
+    render() {
+        return (
+            <div>
+                <Link href={this.props.profileLink}>
+                    {this.props.profileLink}
+                </Link>
+            </div>
+        )
+    }
+}
+
+class Link extends React.Component {
+    changeURL() {
+        window.location.replace(this.props.href)
+    }
+    render() {
+        return (
+            <span
+                style={{color: 'blue', cursor: 'pointer'}}
+                onClick={this.changeURL}
+            >
+                {this.props.children}
+            </span>
         )
     }
 }
