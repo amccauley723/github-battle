@@ -53,7 +53,7 @@ class ProfileLink extends React.Component {
     render() {
         return (
             <div>
-                <Link href={this.props.profileLink}>
+                <Link href="http://google.com">
                     {this.props.profileLink}
                 </Link>
             </div>
@@ -67,10 +67,7 @@ class Link extends React.Component {
     }
     render() {
         return (
-            <span
-                style={{color: 'blue', cursor: 'pointer'}}
-                onClick={this.changeURL}
-            >
+            <span style={{color: 'blue', cursor: 'pointer'}} onClick={this.changeURL}>
                 {this.props.children}
             </span>
         )
